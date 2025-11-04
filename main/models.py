@@ -10,13 +10,14 @@ class Category(models.Model):
         ordering = ('name',)
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
-    
+
     def __str__(self):
         return self.name
     
     def get_absolute_url(self):
         return reverse("main:product_list_by_category", args=[self.slug])
-
+    
+    
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products',
@@ -32,7 +33,7 @@ class Product(models.Model):
 
     class Meta:
         ordering = ('name',)
-    
+
     def __str__(self):
         return self.name
     
